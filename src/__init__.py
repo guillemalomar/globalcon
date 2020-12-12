@@ -4,15 +4,15 @@ WEIGHTS = {
     "Completed": 50,
     "Core cards": 1,
     "Original art": 100,
-    "Testprint": 13,              # if exists and not in global, put -1
-    "Gamma playtest": 15,         # if exists and not in global, put -1
-    "Delta playtest": 12,         # if exists and not in global, put -1
-    "Epsilon playtest": 10,       # if exists and not in global, put -1
+    "Testprint": 13,  # if exists and not in global, put -1
+    "Gamma playtest": 15,  # if exists and not in global, put -1
+    "Delta playtest": 12,  # if exists and not in global, put -1
+    "Epsilon playtest": 10,  # if exists and not in global, put -1
     "Other playtests": 8,
     "Original artist alters": 15,
     "Artist Proof": 10,
-    "Summer": 10,                 # if exists and not in global, put -1
-    "Revised alpha-cut": 5,       # if exists and not in global, put -1
+    "Summer": 10,  # if exists and not in global, put -1
+    "Revised alpha-cut": 5,  # if exists and not in global, put -1
     "Fourth alpha-cut": 5,
     "Miscut": 10,
     "Miscut NFC": 4,
@@ -31,6 +31,6 @@ WEIGHTS = {
 
 LOGO_FILE = "GlobalCon_logo.png"
 
-FONT = 'Helvetica 14 bold'
+FONT = "Helvetica 14 bold"
 
-RESULTS_FOLDER = 'RESULTS'
+RESULTS_FOLDER = "RESULTS"

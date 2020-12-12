@@ -1,0 +1,7 @@
+pytest>=5.3.2
+pytest-html>=2.0.1
+mypy
+black
+pre-commit
+ipython
+ipdb
