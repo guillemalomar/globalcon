@@ -20,6 +20,11 @@ black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-
 
 ## Documentation
 
+![alt text][logo2]
+
+[logo2]: documentation/UI.png "ClassificationAutomation"
+
+
 ### Explanation
 
 This project consists in a calculator that will be used to evaluate global
