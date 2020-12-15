@@ -1,7 +1,7 @@
 [![Code style:
 black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge)](https://github.com/psf/black)
 
-# GlobalCon Calculator
+# GlobalCon Tools
 
 *    Author: Guillem Alomar
 *    Initial release: December 12th, 2020
@@ -24,11 +24,15 @@ black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-
 
 [logo2]: documentation/UI.png "ClassificationAutomation"
 
+![alt text][logo3]
+
+[logo3]: documentation/DiplomaExample.png "DiplomaExample"
+
 
 ### Explanation
 
-This project consists in a calculator that will be used to evaluate global
-sets in following GlobalCons.
+This project consists in a few tools related to the GlobalCon event. A calculator that will be used to evaluate global
+sets in following GlobalCons, and a diploma creator for the competitors in the event.
 
 ## Using the application
 
@@ -58,9 +62,14 @@ Now all pip packages needed to run the application have been installed.
 
 ### Using the application
 
-You can run the  _calculate.py_ script like this:
+To obtain the scores, you can run the  _calculate.py_ script like this:
 ```bash
-python calculate.py
+(venv) ~/globalcon python calculate.py
+```
+
+To obtain the diplomas from the score files previously created, you can run the  _calculate.py_ script like this:
+```bash
+(venv) ~/globalcon python create_diplomas.py
 ```
 
 ### Output
