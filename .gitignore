@@ -1,5 +1,4 @@
-RESULTS/
-DIPLOMAS/
+DATA/
 venv/
 __pycache__/
 .idea/

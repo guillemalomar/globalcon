@@ -29,8 +29,8 @@ WEIGHTS = {
     "Other rarities": 3,
 }
 
-LOGO_FILE = "GlobalCon_logo.png"
+LOGO_FILE = "documentation/GlobalCon_logo.png"
 
 FONT = "Helvetica 14 bold"
 
-RESULTS_FOLDER = "RESULTS"
+RESULTS_FOLDER = "DATA/RESULTS"
