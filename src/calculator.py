@@ -2,7 +2,7 @@ import os
 import tkinter as tk
 from PIL import ImageTk, Image
 
-from src import APP_NAME, WEIGHTS, RESULTS_FOLDER, FONT, LOGO_FILE
+from src import APP_NAME, WEIGHTS, RESULTS_FOLDER, FONT, LOGO_FILE, DEFAULT_MESSAGES
 from src.data import current_instance
 from src.utilities import fetch
 
@@ -52,11 +52,15 @@ class Calculator:
 
         set_metadata = tk.Frame(self.root, bg="white")
         v = tk.StringVar(self.root, value=current_instance.globalset_metadata[0])
-        entry_owner = tk.Entry(set_metadata, textvariable=v, fg="white", bg="#255")
+        entry_owner = tk.Entry(set_metadata, textvariable=v, fg="grey", bg="#255")
         self.owner = entry_owner
+        self.owner.bind("<FocusIn>", self.handle_focus_in_owner)
+
         v = tk.StringVar(self.root, value=current_instance.globalset_metadata[1])
-        entry_card = tk.Entry(set_metadata, textvariable=v, fg="white", bg="#255")
+        entry_card = tk.Entry(set_metadata, textvariable=v, fg="grey", bg="#255")
         self.card = entry_card
+        self.card.bind("<FocusIn>", self.handle_focus_in_card)
+
         entry_owner.pack()
         entry_card.pack()
         set_metadata.pack()
@@ -72,7 +76,9 @@ class Calculator:
                 rows[index], textvariable=v, fg="black", bg="white", width=3
             )
 
-            v = tk.StringVar(self.root, value=current_instance.last_info.get(item, ""))
+            v = tk.StringVar(self.root, value=current_instance.last_info.get(item,
+                                                                             DEFAULT_MESSAGES[
+                                                                                 item]))
             info[index] = tk.Entry(
                 rows[index], textvariable=v, fg="black", bg="white", width=50
             )
@@ -169,14 +175,17 @@ class Calculator:
         if not os.path.exists(RESULTS_FOLDER):
             os.makedirs(RESULTS_FOLDER)
         with open(
-            f"{RESULTS_FOLDER}/"
-            f"{current_instance.total}_"
-            f'{gs_own.replace(" ", "")}_'
-            f'{gs_card.replace(" ", "")}.txt',
-            "w",
+                f"{RESULTS_FOLDER}/"
+                f"{current_instance.total}_"
+                f'{gs_own.replace(" ", "")}_'
+                f'{gs_card.replace(" ", "")}.txt',
+                "w",
         ) as f:
             for key, value in current_instance.last_values.items():
-                f.write(f"{key}: {value} / {current_instance.last_info[key]}\n")
+                additional_info = current_instance.last_info[key] \
+                    if current_instance.last_info[key] != DEFAULT_MESSAGES[key] \
+                    else ""
+                f.write(f"{key}: {value} / {additional_info}\n")
             if result_error:
                 f.write("\nError: Wrong input.")
             else:
@@ -191,3 +200,11 @@ class Calculator:
         self.root.destroy()
 
         _ = Calculator()
+
+    def handle_focus_in_owner(self, _):
+        self.owner.delete(0, tk.END)
+        self.owner.config(fg='yellow')
+
+    def handle_focus_in_card(self, _):
+        self.card.delete(0, tk.END)
+        self.card.config(fg='yellow')
