@@ -2,7 +2,8 @@ import os
 import tkinter as tk
 from PIL import ImageTk, Image
 
-from src import APP_NAME, WEIGHTS, RESULTS_FOLDER, FONT, LOGO_FILE, DEFAULT_MESSAGES
+from src import APP_NAME, WEIGHTS, RESULTS_FOLDER, FONT, LOGO_FILE, DEFAULT_MESSAGES, \
+    RANGES
 from src.data import current_instance
 from src.utilities import fetch
 
@@ -76,9 +77,10 @@ class Calculator:
                 rows[index], textvariable=v, fg="black", bg="white", width=3
             )
 
-            v = tk.StringVar(self.root, value=current_instance.last_info.get(item,
-                                                                             DEFAULT_MESSAGES[
-                                                                                 item]))
+            v = tk.StringVar(self.root,
+                             value=current_instance.last_info.get(item,
+                                                                  DEFAULT_MESSAGES[item])
+                             )
             info[index] = tk.Entry(
                 rows[index], textvariable=v, fg="black", bg="white", width=50
             )
@@ -149,14 +151,14 @@ class Calculator:
 
     @staticmethod
     def evaluate(entry, item):
-        entry_value = int(entry)
+        entry_value = min(max(int(entry), RANGES[item][0]), RANGES[item][1])
         return WEIGHTS[item] * entry_value
 
     def store_data(self):
         result_error, new_root = self.calculate_result()
         if result_error:
             return
-        gs_own = current_instance.globalset_metadata[0]
+        gs_own = str.title(current_instance.globalset_metadata[0])
         if gs_own == "GlobalSet Owner":
             res = tk.Label(new_root.root)
             res.configure(
@@ -164,7 +166,7 @@ class Calculator:
             )
             res.pack(side=tk.RIGHT)
             return
-        gs_card = current_instance.globalset_metadata[1]
+        gs_card = str.title(current_instance.globalset_metadata[1])
         if gs_card == "GlobalSet Card":
             res = tk.Label(new_root.root)
             res.configure(
@@ -185,7 +187,10 @@ class Calculator:
                 additional_info = current_instance.last_info[key] \
                     if current_instance.last_info[key] != DEFAULT_MESSAGES[key] \
                     else ""
-                f.write(f"{key}: {value} / {additional_info}\n")
+                f.write(
+                    f"{key}: {min(max(int(value), RANGES[key][0]), RANGES[key][1])}"
+                    f" / {additional_info}\n"
+                )
             if result_error:
                 f.write("\nError: Wrong input.")
             else:

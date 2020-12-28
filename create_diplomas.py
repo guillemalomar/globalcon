@@ -1,5 +1,6 @@
 import fpdf
 from fpdf import FPDF
+import glob
 import os
 import re
 
@@ -15,7 +16,7 @@ class PDF(FPDF):
         self.add_page(orientation='L')
         self.set_draw_color(0, 80, 180)
         self.set_text_color(50, 50, 50)
-        # self.add_background()
+        self.add_background()
         self.border()
         self.titles()
 
@@ -83,16 +84,35 @@ class PDF(FPDF):
 
     def add_background(self):
         self.set_xy(0.0, 0.0)
-        self.image("documentation/Background.png", link='', type='', w=297, h=210, x=0, y=0)
+        self.image(
+            "documentation/Background.png",
+            link='',
+            type='',
+            w=297,
+            h=210,
+            x=0,
+            y=0
+        )
 
     def add_logo(self):
         self.set_xy(30.0, 115.0)
-        self.image("documentation/GlobalCon_border.png", link='', type='', w=70, h=70)
+        self.image(
+            "documentation/GlobalCon_border.png",
+            link='',
+            type='',
+            w=70,
+            h=70
+        )
 
 
 competitors = [f for f in os.listdir("DATA/RESULTS")
                if os.path.isfile(os.path.join("DATA/RESULTS", f))]
-competitors.sort(reverse=True)
+competitors.sort(key=lambda x: int(x.split('_')[0]), reverse=True)
+
+if os.path.exists(f"{DIPLOMAS_PATH}"):
+    files = glob.glob(f'{DIPLOMAS_PATH}/*.pdf')
+    for f in files:
+        os.remove(f)
 
 if not os.path.exists(f"{DIPLOMAS_PATH}"):
     os.makedirs(f"{DIPLOMAS_PATH}")
