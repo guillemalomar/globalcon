@@ -37,60 +37,33 @@ FONT = "Helvetica 14 bold"
 RESULTS_FOLDER = "DATA/RESULTS"
 
 DEFAULT_MESSAGES = {
-    "Completed":
-        "1 if completed, 0 otherwise",
-    "Core cards":
-        "Amount of core cards owned (max 500)",
-    "Original art":
-        "Amount of original arts owned (max 10)",
-    "Testprint":
-        "Owned testprints, 0 if not owned & doesn't exist, -1 if not owned & exists",
-    "Gamma playtest":
-        "1 of owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
-    "Delta playtest":
-        "1 of owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
-    "Epsilon playtest":
-        "1 of owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
-    "Other playtests":
-        "Amount of other playtests owned (max 10)",
-    "Original artist alters":
-        "Amount of original artist alters owned (max 10)",
-    "Artist Proof":
-        "Amount of different artist proofs owned (max 30)",
-    "Summer":
-        "Owned summer cards, 0 if not owned & doesn't exist, -1 if not owned & exists",
-    "Revised alpha-cut":
-        "1 if owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
-    "Fourth alpha-cut":
-        "1 if owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
-    "Square corners":
-        "1 if owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
-    "Miscut":
-        "Amount of miscuts owned (max 4)",
-    "Miscut NFC":
-        "Amount of NFC miscuts owned (max 4)",
-    "Offcenters":
-        "Amount of offcenters owned (max 4)",
-    "Crimped":
-        "Amount of crimps owned (max 4)",
-    "Albino":
-        "Amount of albinos owned (max 4)",
-    "Signed":
-        "Amount of signed cards owned (max 10)",
-    "Graded BGS 8.5":
-        "Amount of BGS8.5's owned (max 4)",
-    "Graded BGS 9":
-        "Amount of BGS9's owned (max 4)",
-    "Graded BGS 9.5":
-        "Amount of BGS9.5's owned (max 4)",
-    "Graded BGS 10":
-        "Amount of BGS10's owned (max 4)",
-    "Graded PSA 9":
-        "Amount of PSA9's owned (max 4)",
-    "Graded PSA 10":
-        "Amount of PSA10's owned (max 4)",
-    "Other rarities":
-        "Amount of other rarities owned (max 50)",
+    "Completed": "1 if completed, 0 otherwise",
+    "Core cards": "Amount of core cards owned (max 500)",
+    "Original art": "Amount of original arts owned (max 10)",
+    "Testprint": "Owned testprints, 0 if not owned & doesn't exist, -1 if not owned & exists",
+    "Gamma playtest": "1 of owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
+    "Delta playtest": "1 of owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
+    "Epsilon playtest": "1 of owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
+    "Other playtests": "Amount of other playtests owned (max 10)",
+    "Original artist alters": "Amount of original artist alters owned (max 10)",
+    "Artist Proof": "Amount of different artist proofs owned (max 30)",
+    "Summer": "Owned summer cards, 0 if not owned & doesn't exist, -1 if not owned & exists",
+    "Revised alpha-cut": "1 if owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
+    "Fourth alpha-cut": "1 if owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
+    "Square corners": "1 if owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
+    "Miscut": "Amount of miscuts owned (max 4)",
+    "Miscut NFC": "Amount of NFC miscuts owned (max 4)",
+    "Offcenters": "Amount of offcenters owned (max 4)",
+    "Crimped": "Amount of crimps owned (max 4)",
+    "Albino": "Amount of albinos owned (max 4)",
+    "Signed": "Amount of signed cards owned (max 10)",
+    "Graded BGS 8.5": "Amount of BGS8.5's owned (max 4)",
+    "Graded BGS 9": "Amount of BGS9's owned (max 4)",
+    "Graded BGS 9.5": "Amount of BGS9.5's owned (max 4)",
+    "Graded BGS 10": "Amount of BGS10's owned (max 4)",
+    "Graded PSA 9": "Amount of PSA9's owned (max 4)",
+    "Graded PSA 10": "Amount of PSA10's owned (max 4)",
+    "Other rarities": "Amount of other rarities owned (max 50)",
 }
 
 RANGES = {

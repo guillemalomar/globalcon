@@ -2,8 +2,15 @@ import os
 import tkinter as tk
 from PIL import ImageTk, Image
 
-from src import APP_NAME, WEIGHTS, RESULTS_FOLDER, FONT, LOGO_FILE, DEFAULT_MESSAGES, \
-    RANGES
+from src import (
+    APP_NAME,
+    WEIGHTS,
+    RESULTS_FOLDER,
+    FONT,
+    LOGO_FILE,
+    DEFAULT_MESSAGES,
+    RANGES,
+)
 from src.data import current_instance
 from src.utilities import fetch
 
@@ -77,10 +84,10 @@ class Calculator:
                 rows[index], textvariable=v, fg="black", bg="white", width=3
             )
 
-            v = tk.StringVar(self.root,
-                             value=current_instance.last_info.get(item,
-                                                                  DEFAULT_MESSAGES[item])
-                             )
+            v = tk.StringVar(
+                self.root,
+                value=current_instance.last_info.get(item, DEFAULT_MESSAGES[item]),
+            )
             info[index] = tk.Entry(
                 rows[index], textvariable=v, fg="black", bg="white", width=53
             )
@@ -177,16 +184,18 @@ class Calculator:
         if not os.path.exists(RESULTS_FOLDER):
             os.makedirs(RESULTS_FOLDER)
         with open(
-                f"{RESULTS_FOLDER}/"
-                f"{current_instance.total}_"
-                f'{gs_own.replace(" ", "")}_'
-                f'{gs_card.replace(" ", "")}.txt',
-                "w",
+            f"{RESULTS_FOLDER}/"
+            f"{current_instance.total}_"
+            f'{gs_own.replace(" ", "")}_'
+            f'{gs_card.replace(" ", "")}.txt',
+            "w",
         ) as f:
             for key, value in current_instance.last_values.items():
-                additional_info = current_instance.last_info[key] \
-                    if current_instance.last_info[key] != DEFAULT_MESSAGES[key] \
+                additional_info = (
+                    current_instance.last_info[key]
+                    if current_instance.last_info[key] != DEFAULT_MESSAGES[key]
                     else ""
+                )
                 f.write(
                     f"{key}: {min(max(int(value), RANGES[key][0]), RANGES[key][1])}"
                     f" / {additional_info}\n"
@@ -208,8 +217,8 @@ class Calculator:
 
     def handle_focus_in_owner(self, _):
         self.owner.delete(0, tk.END)
-        self.owner.config(fg='yellow')
+        self.owner.config(fg="yellow")
 
     def handle_focus_in_card(self, _):
         self.card.delete(0, tk.END)
-        self.card.config(fg='yellow')
+        self.card.config(fg="yellow")
