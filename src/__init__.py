@@ -14,6 +14,7 @@ WEIGHTS = {
     "Summer": 10,  # if exists and not in global, put -1
     "Revised alpha-cut": 5,  # if exists and not in global, put -1
     "Fourth alpha-cut": 5,
+    "Square corners": 5,
     "Miscut": 10,
     "Miscut NFC": 4,
     "Offcenters": 3,
@@ -39,7 +40,7 @@ DEFAULT_MESSAGES = {
     "Completed":
         "1 if completed, 0 otherwise",
     "Core cards":
-        "Amount of core cards owned (max 50)",
+        "Amount of core cards owned (max 500)",
     "Original art":
         "Amount of original arts owned (max 10)",
     "Testprint":
@@ -59,9 +60,11 @@ DEFAULT_MESSAGES = {
     "Summer":
         "Owned summer cards, 0 if not owned & doesn't exist, -1 if not owned & exists",
     "Revised alpha-cut":
-        "1 of owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
+        "1 if owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
     "Fourth alpha-cut":
-        "1 of owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
+        "1 if owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
+    "Square corners":
+        "1 if owned, 0 if not owned & doesn't exist, -1 if not owned & exists",
     "Miscut":
         "Amount of miscuts owned (max 4)",
     "Miscut NFC":
@@ -104,6 +107,7 @@ RANGES = {
     "Summer": [-1, 4],
     "Revised alpha-cut": [-1, 1],
     "Fourth alpha-cut": [-1, 1],
+    "Square corners": [-1, 1],
     "Miscut": [0, 4],
     "Miscut NFC": [0, 4],
     "Offcenters": [0, 4],

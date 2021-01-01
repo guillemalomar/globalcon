@@ -21,7 +21,7 @@ class Calculator:
         panel.pack(side="left")
 
         self.root = new_root
-        self.root.geometry("890x810+%d+%d" % (0, 0))
+        self.root.geometry("940x838+%d+%d" % (0, 0))
         self.root.config(background="white")
         self.total = 0
         self.fields = None
@@ -82,7 +82,7 @@ class Calculator:
                                                                   DEFAULT_MESSAGES[item])
                              )
             info[index] = tk.Entry(
-                rows[index], textvariable=v, fg="black", bg="white", width=50
+                rows[index], textvariable=v, fg="black", bg="white", width=53
             )
 
             rows[index].pack(side=tk.TOP, padx=5, pady=0)
