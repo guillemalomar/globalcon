@@ -74,7 +74,7 @@ To obtain the diplomas from the score files previously created, you can run the 
 
 ### Output
 
-You can check the obtained result files in the _RESULTS_ folder (the 
+You can check the obtained result files in the _DATA_ folder (the 
 folder name can be renamed in _src/\_\_init\_\_.py_).
 
 ## Development
