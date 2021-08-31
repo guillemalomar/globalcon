@@ -6,6 +6,7 @@ from src import (
     APP_NAME,
     WEIGHTS,
     RESULTS_FOLDER,
+    RESULTS_NOCOMPETE_FOLDER,
     FONT,
     LOGO_FILE,
     DEFAULT_MESSAGES,
@@ -28,7 +29,7 @@ class Calculator:
         panel.pack(side="left")
 
         self.root = new_root
-        self.root.geometry("940x838+%d+%d" % (0, 0))
+        self.root.geometry("979x810+%d+%d" % (0, 0))
         self.root.config(background="white")
         self.total = 0
         self.fields = None
@@ -89,7 +90,7 @@ class Calculator:
                 value=current_instance.last_info.get(item, DEFAULT_MESSAGES[item]),
             )
             info[index] = tk.Entry(
-                rows[index], textvariable=v, fg="black", bg="white", width=53
+                rows[index], textvariable=v, fg="black", bg="white", width=58
             )
 
             rows[index].pack(side=tk.TOP, padx=5, pady=0)
@@ -103,27 +104,34 @@ class Calculator:
     def form_buttons(self):
         b0 = tk.Button(
             self.root,
-            text="Save",
-            command=(lambda e=self.fields: self.store_data()),
+            text="Save&Compete",
+            command=(lambda e=self.fields: self.store_compete_data()),
             fg="black",
         )
         b0.pack(side=tk.LEFT, padx=3, pady=3)
         b1 = tk.Button(
             self.root,
-            text="Show",
-            command=(lambda e=self.fields: self.calculate_result()),
+            text="Save",
+            command=(lambda e=self.fields: self.store_data()),
             fg="black",
         )
         b1.pack(side=tk.LEFT, padx=3, pady=3)
         b2 = tk.Button(
             self.root,
+            text="Show",
+            command=(lambda e=self.fields: self.calculate_result()),
+            fg="black",
+        )
+        b2.pack(side=tk.LEFT, padx=3, pady=3)
+        b3 = tk.Button(
+            self.root,
             text="Clean",
             command=(lambda e=self.fields: self.clean()),
             fg="black",
         )
-        b2.pack(side=tk.LEFT, padx=3, pady=3)
-        b3 = tk.Button(self.root, text="Quit", command=self.root.quit, fg="black")
         b3.pack(side=tk.LEFT, padx=3, pady=3)
+        b4 = tk.Button(self.root, text="Quit", command=self.root.quit, fg="black")
+        b4.pack(side=tk.LEFT, padx=3, pady=3)
 
     def calculate_result(self):
         fetch(self.fields, self.owner, self.card)
@@ -161,7 +169,7 @@ class Calculator:
         entry_value = min(max(int(entry), RANGES[item][0]), RANGES[item][1])
         return WEIGHTS[item] * entry_value
 
-    def store_data(self):
+    def store_compete_data(self):
         result_error, new_root = self.calculate_result()
         if result_error:
             return
@@ -204,6 +212,54 @@ class Calculator:
                 f.write("\nError: Wrong input.")
             else:
                 f.write(f"\nResult: {current_instance.total}")
+
+    def store_data(self):
+        fetch(self.fields, self.owner, self.card)
+        self.root.destroy()
+        new_root = Calculator()
+        res = tk.Label(new_root.root)
+        res.configure(
+            text=f"Saved",
+            font="Helvetica 14 bold",
+            fg="black",
+            bg="white",
+        )
+        res.pack(side=tk.RIGHT)
+        gs_own = str.title(current_instance.globalset_metadata[0])
+        if gs_own == "GlobalSet Owner":
+            res = tk.Label(new_root.root)
+            res.configure(
+                text=f"Error: Specify Owner", font=FONT, fg="black", bg="white"
+            )
+            res.pack(side=tk.RIGHT)
+            return
+        gs_card = str.title(current_instance.globalset_metadata[1])
+        if gs_card == "GlobalSet Card":
+            res = tk.Label(new_root.root)
+            res.configure(
+                text=f"Error: Specify Card", font=FONT, fg="black", bg="white"
+            )
+            res.pack(side=tk.RIGHT)
+            return
+        if not os.path.exists(RESULTS_NOCOMPETE_FOLDER):
+            os.makedirs(RESULTS_NOCOMPETE_FOLDER)
+        with open(
+            f"{RESULTS_NOCOMPETE_FOLDER}/"
+            f'{gs_own.replace(" ", "")}_'
+            f'{gs_card.replace(" ", "")}.txt',
+            "w",
+        ) as f:
+            for key, value in current_instance.last_values.items():
+                additional_info = (
+                    current_instance.last_info[key]
+                    if current_instance.last_info[key] != DEFAULT_MESSAGES[key]
+                    else ""
+                )
+                f.write(
+                    f"{key}: {min(max(int(value), RANGES[key][0]), RANGES[key][1])}"
+                    f" / {additional_info}\n"
+                )
+            f.write(f"\nSAVED")
 
     def clean(self):
         current_instance.globalset_metadata[0] = "GlobalSet Owner"

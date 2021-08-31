@@ -7,6 +7,7 @@ CENTER_X = 153
 CENTER_Y = 102.5
 
 DIPLOMAS_PATH = "DATA/DIPLOMAS"
+DIPLOMAS_PATH_NOCOMPETE = "DATA/DIPLOMAS_NOCOMPETE"
 
 
 class PDF(FPDF):
@@ -28,8 +29,8 @@ class PDF(FPDF):
     def titles(self):
         self.set_xy(CENTER_X, CENTER_Y)
         self.add_font("moria citadel", "", "MoriaCitadel.TTF", uni=True)
-        self.set_font("moria citadel", "", size=46)
-        self.cell(w=-8.0, h=-150.0, align="C", txt="GlobalCon 2020", border=0)
+        self.set_font("moria citadel", "", size=44)
+        self.cell(w=-8.0, h=-150.0, align="C", txt="GlobalCon I - Sept.2021", border=0)
 
     def organizers(self):
         self.set_xy(CENTER_X, CENTER_Y)
@@ -41,7 +42,7 @@ class PDF(FPDF):
         self.set_xy(CENTER_X, CENTER_Y)
         self.set_font("moria citadel", "", size=26)
         self.set_text_color(50, 50, 50)
-        self.cell(w=-8.0, h=-108.0, align="C", txt="Competitor name", border=0)
+        self.cell(w=-8.0, h=-108.0, align="C", txt="Collector", border=0)
 
         self.set_xy(CENTER_X, CENTER_Y)
         self.set_font(family="Arial", style="B", size=32)
@@ -52,7 +53,7 @@ class PDF(FPDF):
         self.set_xy(CENTER_X, CENTER_Y)
         self.set_font("moria citadel", "", size=26)
         self.set_text_color(50, 50, 50)
-        self.cell(w=-8.0, h=-51.0, align="C", txt="Competitor card", border=0)
+        self.cell(w=-8.0, h=-51.0, align="C", txt="Card", border=0)
 
         self.set_xy(CENTER_X, CENTER_Y)
         self.set_font(family="Arial", style="B", size=32)
@@ -68,7 +69,7 @@ class PDF(FPDF):
         self.set_xy(CENTER_X, CENTER_Y)
         self.set_font(family="Arial", style="B", size=32)
         self.set_text_color(50, 50, 50)
-        self.cell(w=-8.0, h=28.0, align="C", txt=f"{position} / {total}", border=0)
+        self.cell(w=-8.0, h=28.0, align="C", txt=f"{position}", border=0)
 
     def add_points(self, points):
         self.set_xy(CENTER_X, CENTER_Y)
@@ -92,47 +93,86 @@ class PDF(FPDF):
         self.image("documentation/GlobalCon_border.png", link="", type="", w=70, h=70)
 
 
-competitors = [
-    f
-    for f in os.listdir("DATA/RESULTS")
-    if os.path.isfile(os.path.join("DATA/RESULTS", f))
-]
-competitors.sort(key=lambda x: int(x.split("_")[0]), reverse=True)
+def create_competitors_diplomas():
+    competitors = [
+        f
+        for f in os.listdir("DATA/RESULTS")
+        if os.path.isfile(os.path.join("DATA/RESULTS", f))
+    ]
+    competitors.sort(key=lambda x: int(x.split("_")[0]), reverse=True)
 
-if os.path.exists(f"{DIPLOMAS_PATH}"):
-    files = glob.glob(f"{DIPLOMAS_PATH}/*.pdf")
-    for f in files:
-        os.remove(f)
+    if os.path.exists(f"{DIPLOMAS_PATH}"):
+        files = glob.glob(f"{DIPLOMAS_PATH}/*.pdf")
+        for f in files:
+            os.remove(f)
 
-if not os.path.exists(f"{DIPLOMAS_PATH}"):
-    os.makedirs(f"{DIPLOMAS_PATH}")
+    if not os.path.exists(f"{DIPLOMAS_PATH}"):
+        os.makedirs(f"{DIPLOMAS_PATH}")
 
-total_competitors = len(competitors)
-previous_points = 10000
-previous_position = 1
-for ind, competitor in enumerate(competitors, 1):
-    competitor_data = competitor[:-4].split("_")
-    competitor_points = competitor_data[0]
-    competitor_name = " ".join(re.findall("[A-Z][^A-Z]*", competitor_data[1]))
-    competitor_card = " ".join(re.findall("[A-Z][^A-Z]*", competitor_data[2]))
+    total_competitors = len(competitors)
+    previous_points = 10000
+    previous_position = 1
+    for ind, competitor in enumerate(competitors, 1):
+        competitor_data = competitor[:-4].split("_")
+        competitor_points = competitor_data[0]
+        competitor_name = " ".join(re.findall("[A-Z][^A-Z]*", competitor_data[1]))
+        competitor_card = " ".join(re.findall("[A-Z][^A-Z]*", competitor_data[2]))
 
-    pdf = PDF()
-    pdf.add_name(competitor_name)
-    pdf.add_card(competitor_card)
+        pdf = PDF()
+        pdf.add_name(competitor_name)
+        pdf.add_card(competitor_card)
 
-    if competitor_points == previous_points:
-        final_position = previous_position
-    else:
-        final_position = ind
-    pdf.add_position(final_position, total_competitors)
-    pdf.add_points(competitor_points)
-    pdf.organizers()
-    pdf.add_logo()
+        if competitor_points == previous_points:
+            final_position = previous_position
+        else:
+            final_position = ind
+        pdf.add_position(final_position, total_competitors)
+        pdf.add_points(competitor_points)
+        pdf.organizers()
+        pdf.add_logo()
 
-    pdf.output(
-        f"{DIPLOMAS_PATH}/{final_position}_{competitor_data[1]}_{competitor_data[2]}.pdf",
-        "F",
-    )
+        pdf.output(
+            f"{DIPLOMAS_PATH}/{final_position}_{competitor_data[1]}_{competitor_data[2]}.pdf",
+            "F",
+        )
+        print(f"{DIPLOMAS_PATH}/{final_position}_{competitor_data[1]}_{competitor_data[2]}.pdf")
 
-    previous_points = competitor_points
-    previous_position = final_position
+        previous_points = competitor_points
+        previous_position = final_position
+
+
+def create_other_diplomas():
+    others = [
+        f
+        for f in os.listdir("DATA/RESULTS_NOCOMPETE")
+        if os.path.isfile(os.path.join("DATA/RESULTS_NOCOMPETE", f))
+    ]
+
+    if os.path.exists(f"{DIPLOMAS_PATH_NOCOMPETE}"):
+        files = glob.glob(f"{DIPLOMAS_PATH_NOCOMPETE}/*.pdf")
+        for f in files:
+            os.remove(f)
+
+    if not os.path.exists(f"{DIPLOMAS_PATH_NOCOMPETE}"):
+        os.makedirs(f"{DIPLOMAS_PATH_NOCOMPETE}")
+
+    for ind, collector in enumerate(others, 1):
+        collector = collector[:-4].split("_")
+        competitor_name = " ".join(re.findall("[A-Z][^A-Z]*", collector[0]))
+        competitor_card = " ".join(re.findall("[A-Z][^A-Z]*", collector[1]))
+
+        pdf = PDF()
+        pdf.add_name(competitor_name)
+        pdf.add_card(competitor_card)
+
+        pdf.organizers()
+        pdf.add_logo()
+
+        pdf.output(
+            f"{DIPLOMAS_PATH_NOCOMPETE}/{collector[0]}_{collector[1]}.pdf",
+            "F",
+        )
+
+
+create_competitors_diplomas()
+create_other_diplomas()
