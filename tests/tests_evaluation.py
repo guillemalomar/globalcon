@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from src.calculator import Calculator
+from globalcon_tools.calculator.calculator import Calculator
 
 
 class TestEvaluation(unittest.TestCase):

@@ -1,4 +1,4 @@
-from src.data import current_instance
+from globalcon_tools.calculator.data import current_instance
 
 
 def fetch(entries, owner, card):

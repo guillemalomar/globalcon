@@ -31,14 +31,16 @@ black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-
 
 ### Explanation
 
-This project consists in a few tools related to the GlobalCon event. A calculator that will be used to evaluate global
-sets in following GlobalCons, and a diploma creator for the competitors in the event.
+This project consists in a few tools related to the GlobalCon event:
+- A calculator that will be used to evaluate global sets in following GlobalCons.
+- A diploma creator for the competitors in the event.
+- A global set list creator.
 
 ## Using the application
 
 ### Requirements
 
-- Python +3.8
+- Python +3.7
 
 The complete list of packages is available in the file _requirements.txt_
 
@@ -47,7 +49,7 @@ The complete list of packages is available in the file _requirements.txt_
 I recommend creating a virtualenv for this project:
 ```bash
 # Create the virtual environment
-~/globalcon virtualenv -p python3.8 venv
+~/globalcon virtualenv -p python3.7 venv
 
 # Activate it (linux/mac)
 ~/globalcon source venv/bin/activate
@@ -62,14 +64,13 @@ Now all pip packages needed to run the application have been installed.
 
 ### Using the application
 
-To obtain the scores, you can run the  _calculate.py_ script like this:
+To start the application:
 ```bash
-(venv) ~/globalcon python calculate.py
-```
-
-To obtain the diplomas from the score files previously created, you can run the  _calculate.py_ script like this:
-```bash
-(venv) ~/globalcon python create_diplomas.py
+(venv) ~/globalcon python globalcon.py
+Please enter the desired tool to use:
+1 - Calculate Score
+2 - Generate Diplomas
+3 - Generate Globalset List
 ```
 
 ### Output

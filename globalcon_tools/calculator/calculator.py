@@ -2,7 +2,7 @@ import os
 import tkinter as tk
 from PIL import ImageTk, Image
 
-from src import (
+from globalcon_tools.calculator import (
     APP_NAME,
     WEIGHTS,
     RESULTS_FOLDER,
@@ -12,13 +12,16 @@ from src import (
     DEFAULT_MESSAGES,
     RANGES,
 )
-from src.data import current_instance
-from src.utilities import fetch
+from globalcon_tools import create_data_folders
+from globalcon_tools.calculator.data import current_instance
+from globalcon_tools.calculator.utilities import fetch
 
 
 class Calculator:
     def __init__(self):
         super().__init__()
+
+        create_data_folders("calculator")
 
         new_root = tk.Tk()
 

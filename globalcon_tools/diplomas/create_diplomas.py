@@ -3,11 +3,10 @@ import glob
 import os
 import re
 
+from globalcon_tools import create_data_folders, DIPLOMAS_PATH, DIPLOMAS_PATH_NOCOMPETE
+
 CENTER_X = 153
 CENTER_Y = 102.5
-
-DIPLOMAS_PATH = "DATA/DIPLOMAS"
-DIPLOMAS_PATH_NOCOMPETE = "DATA/DIPLOMAS_NOCOMPETE"
 
 
 class PDF(FPDF):
@@ -30,7 +29,7 @@ class PDF(FPDF):
         self.set_xy(CENTER_X, CENTER_Y)
         self.add_font("moria citadel", "", "MoriaCitadel.TTF", uni=True)
         self.set_font("moria citadel", "", size=44)
-        self.cell(w=-8.0, h=-150.0, align="C", txt="GlobalCon I - Sept.2021", border=0)
+        self.cell(w=-8.0, h=-150.0, align="C", txt="GlobalCon II - Oct.2022", border=0)
 
     def organizers(self):
         self.set_xy(CENTER_X, CENTER_Y)
@@ -60,7 +59,7 @@ class PDF(FPDF):
         self.set_text_color(50, 50, 50)
         self.cell(w=-8.0, h=-29.0, align="C", txt=card_name, border=0)
 
-    def add_position(self, position, total):
+    def add_position(self, position):
         self.set_xy(CENTER_X, CENTER_Y)
         self.set_font("moria citadel", "", size=26)
         self.set_text_color(50, 50, 50)
@@ -93,7 +92,14 @@ class PDF(FPDF):
         self.image("documentation/GlobalCon_border.png", link="", type="", w=70, h=70)
 
 
+def create_all_diplomas():
+    create_data_folders("diplomas")
+    create_competitors_diplomas()
+    create_other_diplomas()
+
+
 def create_competitors_diplomas():
+    create_data_folders("diplomas")
     competitors = [
         f
         for f in os.listdir("DATA/RESULTS")
@@ -109,7 +115,6 @@ def create_competitors_diplomas():
     if not os.path.exists(f"{DIPLOMAS_PATH}"):
         os.makedirs(f"{DIPLOMAS_PATH}")
 
-    total_competitors = len(competitors)
     previous_points = 10000
     previous_position = 1
     for ind, competitor in enumerate(competitors, 1):
@@ -126,7 +131,7 @@ def create_competitors_diplomas():
             final_position = previous_position
         else:
             final_position = ind
-        pdf.add_position(final_position, total_competitors)
+        pdf.add_position(final_position)
         pdf.add_points(competitor_points)
         pdf.organizers()
         pdf.add_logo()
@@ -142,6 +147,7 @@ def create_competitors_diplomas():
 
 
 def create_other_diplomas():
+    create_data_folders("diplomas")
     others = [
         f
         for f in os.listdir("DATA/RESULTS_NOCOMPETE")
@@ -172,7 +178,3 @@ def create_other_diplomas():
             f"{DIPLOMAS_PATH_NOCOMPETE}/{collector[0]}_{collector[1]}.pdf",
             "F",
         )
-
-
-create_competitors_diplomas()
-create_other_diplomas()
