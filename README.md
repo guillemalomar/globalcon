@@ -10,6 +10,7 @@ black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-
 **Index**
 * [Documentation](#documentation)
     * [Explanation](#explanation)
+    * [Must Read](#must-read)
 * [Using the application](#using-the-application)
     * [Requirements](#requirements)
     * [Installation](#installation)
@@ -28,6 +29,10 @@ black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-
 
 [logo3]: documentation/DiplomaExample.png "DiplomaExample"
 
+![alt text][logo4]
+
+[logo4]: documentation/GlobalSetList_Example.png "GlobalsetListExample"
+
 
 ### Explanation
 
@@ -35,6 +40,14 @@ This project consists in a few tools related to the GlobalCon event:
 - A calculator that will be used to evaluate global sets in following GlobalCons.
 - A diploma creator for the competitors in the event.
 - A global set list creator.
+
+### Explanation
+
+The GlobalSet List Generator must be updated from time to time if the card to process has recent reprints.
+There might be expansions which haven't been added yet, which will result in an error when generating the list.
+To avoid this, it's as easy as adding that new set to the file globalcon_tools/globalset_list/specifications.py file,
+together with its available languages. Feel free to create a PR with the newly added sets :)
+Also, the rarities list is not exact, as rarities such as playtests or testprints are very specifical to each card.
 
 ## Using the application
 
