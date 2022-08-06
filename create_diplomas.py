@@ -36,7 +36,7 @@ class PDF(FPDF):
         self.set_xy(CENTER_X, CENTER_Y)
         self.set_font("moria citadel", "", size=20)
         self.set_text_color(50, 50, 50)
-        self.cell(w=155.0, h=87.0, align="C", txt="The Organizers", border=0)
+        # self.cell(w=155.0, h=87.0, align="C", txt="The Organizers", border=0)
 
     def add_name(self, competitor_to_add):
         self.set_xy(CENTER_X, CENTER_Y)
