@@ -7,7 +7,7 @@ from globalcon_tools.globalset_list.specifications import (
     NON_EXISTING_PLAYTESTS,
     LANGUAGE_IDS,
     LANGUAGES,
-    ARTIST_PROOFS,
+    ARTIST_PROOFS_EXCEPTIONS,
     SPECIFIC_RARITIES,
     GENERIC_RARITIES,
     PLAYTESTS_SETS,
@@ -163,12 +163,16 @@ def generate_list():
 
     show_artist_proofs_header = True
     for set_name in set_names:
-        for ind, ap in enumerate(ARTIST_PROOFS.get(set_name, [])):
-            if show_artist_proofs_header:
-                globalset_list_file.write("Artist Proofs\n")
-                show_artist_proofs_header = False
-            globalset_list_file.write(f"{counter} {set_name} [{ap}]\n")
+        if show_artist_proofs_header:
+            globalset_list_file.write("Artist Proofs\n")
+            show_artist_proofs_header = False
+        if set_name not in ARTIST_PROOFS_EXCEPTIONS.keys():
+            globalset_list_file.write(f"{counter} {set_name} [English]\n")
             counter += 1
+        else:
+            for language in ARTIST_PROOFS_EXCEPTIONS[set_name]:
+                globalset_list_file.write(f"{counter} {set_name} [{language}]\n")
+                counter += 1
 
     globalset_list_file.write("Rarities\n")
     for set_name in set_names:

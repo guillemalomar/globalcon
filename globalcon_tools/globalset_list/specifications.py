@@ -21,7 +21,7 @@ LANGUAGES = {
     "Summer Magic / Edgar": [],
     "Fourth Edition": [1, 2, 3, 4, 5, 6, 7],
     "Fourth Edition Foreign Black Border": [5, 6, 7, 8, 9],
-    "Fifth Edition": [1, 2, 3, 4, 5, 6, 7, 8, 10],
+    "Fifth Edition": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     "Classic Sixth Edition": [1, 2, 3, 4, 5, 6, 7, 9, 10],
     "Seventh Edition": [1, 2, 3, 4, 5, 6, 7, 9, 10],
     "Eighth Edition": [1, 2, 3, 4, 5, 6, 7, 9, 10],
@@ -31,6 +31,8 @@ LANGUAGES = {
     "Magic 2011": [1, 2, 3, 4, 5, 6, 7, 9, 11],
     "Magic 2012": [1, 2, 3, 4, 5, 6, 7, 9, 11],
     "Magic 2013": [1, 2, 3, 4, 5, 6, 7, 8, 9, 11],
+    "Magic 2014": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    "Magic 2015": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     "Arabian Nights": [1],
     "Antiquities": [1],
     "Legends": [1],
@@ -40,7 +42,7 @@ LANGUAGES = {
     "Salvat 2011": [5],
     "Battle Royale Box Set": [1],
     "Introductory Two-Player Set": [1, 2, 3, 4, 5, 7],
-    "Rivals Quick Start Set": [],
+    "Rivals Quick Start Set": [1],
     "Anthologies": [1],
     "Secret Lair Drop": [1],
     "Rinascimento": [2],
@@ -129,28 +131,31 @@ LANGUAGES = {
     "Duel Decks: Jace vs. Vraska": [1, 7],
     "Visions": [1, 2, 3, 4, 5, 6, 7, 8, 10],
     "Zendikar": [1, 2, 3, 4, 5, 6, 7, 8, 9, 11],
+    "Starter 2000": [1, 2, 3, 4, 5, 6, 7],
+    "Worldwake": [1, 2, 3, 4, 5, 6, 7, 8, 9, 11],
+    "Mythic Edition": [1],
+    "Shards of Alara": [1, 2, 3, 4, 5, 6, 7, 9, 11],
+    "Shards of Alara Promos": [1],
+    "Lorwyn": [1, 2, 3, 4, 5, 6, 7, 9, 11],
+    "Duels of the Planeswalkers 2009 Promos ": [1],
+    "Duels of the Planeswalkers 2010 Promos ": [1],
+    "San Diego Comic-Con 2014": [1],
+    "Alchemy Horizons: Baldur's Gate": [1],
+    "Double Masters 2022": [1, 3, 4, 7, 10],
 }
 
-ARTIST_PROOFS = {
+ARTIST_PROOFS_EXCEPTIONS = {
+    "Limited Edition Alpha": [],
     "Limited Edition Beta": ["English"],
+    "Collectors’ Edition": [],
+    "Intl. Collectors’ Edition": [],
+    "Unlimited Edition": [],
     "Revised Edition": ["English", "Italian"],
-    "Fourth Edition": ["English", "Italian", "Japanese", "T-Chinese"],
-    "Fifth Edition": ["English"],
-    "Classic Sixth Edition": ["English"],
-    "Seventh Edition": ["English"],
-    "Eighth Edition": ["English"],
-    "Ninth Edition": ["English"],
-    "Tenth Edition": ["English"],
-    "Magic 2010": ["English"],
-    "Antiquities": ["English"],
-    "Legends": ["English"],
-    "The Dark": ["English"],
-    "Fallen Empires": ["English"],
-    "Chronicles": ["English"],
+    "Foreign Black Border": [],
+    "Summer Magic / Edgar": [],
+    "Fourth Edition": ["English", "Italian"],
+    "Fourth Edition Foreign Black Border": ["Japanese", "T-Chinese"],
     "Ice Age": ["English", "Italian", "French", "Spanish", "Portuguese"],
-    "Homelands": ["English"],
-    "Alliances": ["English"],
-    "Mirage": ["English"],
     "Eternal Masters": [
         "English",
         "English (FOIL)",
@@ -159,6 +164,18 @@ ARTIST_PROOFS = {
         "S-Chinese",
         "S-Chinese (FOIL)",
     ],
+    "Judge Gift Cards 1998": [],
+    "Duel Decks: Jace vs. Chandra": [],
+    "Duel Decks: Divine vs. Demonic": [],
+    "Duel Decks Anthology: Jace vs. Chandra": [],
+    "Duel Decks Anthology: Divine vs. Demonic": [],
+    "Duel Decks: Garruk vs. Liliana": [],
+    "Duel Decks: Ajani vs. Nicol Bolas": [],
+    "Duel Decks Anthology: Garruk vs. Liliana": [],
+    "Duels of the Planeswalkers": [],
+    "Duel Decks: Izzet vs. Golgari": [],
+    "Duel Decks: Jace vs. Vraska": [],
+    "Salvat 2011": [],
 }
 
 SPECIFIC_RARITIES = {
@@ -242,7 +259,7 @@ NON_EXISTING_PLAYTESTS = {
 
 NON_EXISTING_CARDS = {
     "Fifth Edition": {
-        "T-Chinese": {
+        "S-Chinese": {
             "non-foil": [
                 "Æther Storm",
                 "Amulet of Kroog",
