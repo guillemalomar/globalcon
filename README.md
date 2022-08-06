@@ -41,7 +41,7 @@ This project consists in a few tools related to the GlobalCon event:
 - A diploma creator for the competitors in the event.
 - A global set list creator.
 
-### Explanation
+### Must Read
 
 The GlobalSet List Generator must be updated from time to time if the card to process has recent reprints.
 There might be expansions which haven't been added yet, which will result in an error when generating the list.
@@ -92,7 +92,7 @@ Please enter the desired tool to use:
 ### Output
 
 You can check the obtained result files in the _DATA_ folder (the 
-folder name can be renamed in _src/\_\_init\_\_.py_).
+folder name can be renamed in _globalcon_tools/\_\_init\_\_.py_).
 
 ## Development
 

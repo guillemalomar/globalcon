@@ -12,7 +12,7 @@ from globalcon_tools.globalset_list.specifications import (
     GENERIC_RARITIES,
     PLAYTESTS_SETS,
 )
-from globalcon_tools import create_data_folders
+from globalcon_tools import create_data_folders, GLOBALSETLIST_PATH
 from globalcon_tools.globalset_list.card import Card
 
 global_set_card = Card()
@@ -87,7 +87,7 @@ def generate_list():
     )
 
     globalset_list_file = open(
-        f"DATA/GLOBALSET_LISTS/{global_set_card.card_name}.txt", "w"
+        f"{GLOBALSETLIST_PATH}/{global_set_card.card_name}.txt", "w"
     )
 
     globalset_list_file.write(

@@ -3,7 +3,7 @@ import glob
 import os
 import re
 
-from globalcon_tools import create_data_folders, DIPLOMAS_PATH, DIPLOMAS_PATH_NOCOMPETE
+from globalcon_tools import create_data_folders, DIPLOMAS_PATH, DIPLOMAS_PATH_NOCOMPETE, CALCULATOR_PATH, CALCULATOR_PATH_NOCOMPETE
 
 CENTER_X = 153
 CENTER_Y = 102.5
@@ -102,8 +102,8 @@ def create_competitors_diplomas():
     create_data_folders("diplomas")
     competitors = [
         f
-        for f in os.listdir("DATA/RESULTS")
-        if os.path.isfile(os.path.join("DATA/RESULTS", f))
+        for f in os.listdir(CALCULATOR_PATH)
+        if os.path.isfile(os.path.join(CALCULATOR_PATH, f))
     ]
     competitors.sort(key=lambda x: int(x.split("_")[0]), reverse=True)
 
@@ -152,8 +152,8 @@ def create_other_diplomas():
     create_data_folders("diplomas")
     others = [
         f
-        for f in os.listdir("DATA/RESULTS_NOCOMPETE")
-        if os.path.isfile(os.path.join("DATA/RESULTS_NOCOMPETE", f))
+        for f in os.listdir(CALCULATOR_PATH_NOCOMPETE)
+        if os.path.isfile(os.path.join(CALCULATOR_PATH_NOCOMPETE, f))
     ]
 
     if os.path.exists(f"{DIPLOMAS_PATH_NOCOMPETE}"):
