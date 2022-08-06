@@ -140,7 +140,9 @@ def create_competitors_diplomas():
             f"{DIPLOMAS_PATH}/{final_position}_{competitor_data[1]}_{competitor_data[2]}.pdf",
             "F",
         )
-        print(f"{DIPLOMAS_PATH}/{final_position}_{competitor_data[1]}_{competitor_data[2]}.pdf")
+        print(
+            f"{DIPLOMAS_PATH}/{final_position}_{competitor_data[1]}_{competitor_data[2]}.pdf"
+        )
 
         previous_points = competitor_points
         previous_position = final_position

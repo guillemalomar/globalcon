@@ -17,7 +17,7 @@ DATA_FOLDERS = {
     ],
     "globalset_list": [
         "DATA/GLOBALSET_LISTS",
-    ]
+    ],
 }
 
 

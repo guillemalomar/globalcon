@@ -4,3 +4,6 @@ __pycache__/
 .idea/
 MoriaCitadel.pkl
 Announcement/
+lib
+bin
+pyvenv.cfg

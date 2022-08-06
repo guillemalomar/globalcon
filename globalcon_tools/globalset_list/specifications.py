@@ -151,8 +151,14 @@ ARTIST_PROOFS = {
     "Homelands": ["English"],
     "Alliances": ["English"],
     "Mirage": ["English"],
-    "Eternal Masters": ["English", "English (FOIL)", "Japanese", "Japanese (FOIL)",
-                        "S-Chinese", "S-Chinese (FOIL)"]
+    "Eternal Masters": [
+        "English",
+        "English (FOIL)",
+        "Japanese",
+        "Japanese (FOIL)",
+        "S-Chinese",
+        "S-Chinese (FOIL)",
+    ],
 }
 
 SPECIFIC_RARITIES = {
@@ -336,33 +342,13 @@ NON_EXISTING_CARDS = {
                 "Wall of Bone",
                 "War Mammoth",
                 "Wolverine Pack",
-                "Zombie Master"
+                "Zombie Master",
             ]
         }
     },
-    "Urza's Legacy": {
-        "T-Chinese": {
-            "foil": []
-        }
-    },
-    "Urza's Destiny": {
-        "T-Chinese": {
-            "foil": []
-        }
-    },
-    "Mercadian Masques": {
-        "T-Chinese": {
-            "foil": []
-        }
-    },
-    "Invasion": {
-        "S-Chinese": {
-            "foil": []
-        }
-    },
-    "Jumpstart: Historic Horizons": {
-        "English": {
-            "foil": []
-        }
-    }
+    "Urza's Legacy": {"T-Chinese": {"foil": []}},
+    "Urza's Destiny": {"T-Chinese": {"foil": []}},
+    "Mercadian Masques": {"T-Chinese": {"foil": []}},
+    "Invasion": {"S-Chinese": {"foil": []}},
+    "Jumpstart: Historic Horizons": {"English": {"foil": []}},
 }

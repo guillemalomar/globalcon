@@ -49,6 +49,9 @@ To avoid this, it's as easy as adding that new set to the file globalcon_tools/g
 together with its available languages. Feel free to create a PR with the newly added sets :)
 Also, the rarities list is not exact, as rarities such as playtests or testprints are very specifical to each card.
 
+Finally, the weights applied to each field in the calculator are not final, the GlobalCon organizers might make changes
+in the future, or give extra points during a GlobalCon to participants showing their Global Sets :)
+
 ## Using the application
 
 ### Requirements
