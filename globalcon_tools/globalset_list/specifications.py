@@ -35,7 +35,7 @@ LANGUAGES = {
     "Magic 2015": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     "Arabian Nights": [1],
     "Antiquities": [1],
-    "Legends": [1],
+    "Legends": [1, 2],
     "The Dark": [1, 2],
     "Collectors’ Edition": [1],
     "Intl. Collectors’ Edition": [1],
