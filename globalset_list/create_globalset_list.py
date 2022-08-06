@@ -39,8 +39,8 @@ def is_common_or_uncommon_fourth_edition_card():
 
 
 print("Enter card name: ")
-# card_name = input()
-card_name = "Emrakul, the aeons torn"
+card_name = input()
+# card_name = "Emrakul, the aeons torn"
 
 request = f"https://api.scryfall.com/cards/named?fuzzy={'+'.join(card_name.split(' '))}"
 r = requests.get(request)
